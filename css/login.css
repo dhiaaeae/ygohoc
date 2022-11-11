@@ -1,193 +1,167 @@
-@import "compass/css3";
-
-$body-bg: #c1bdba;
-$form-bg: #13232f;
-$white: #ffffff;
-
-$main: #1ab188;
-$main-light: lighten($main,5%);
-$main-dark: darken($main,5%);
-
-$gray-light: #a0b3b0;
-$gray: #ddd;
-
-$thin: 300;
-$normal: 400;
-$bold: 600;
-$br: 4px;
-
-*, *:before, *:after {
-  box-sizing: border-box;
-}
-
 html {
-	overflow-y: scroll; 
+  height: 100%;
 }
-
 body {
-  background:$body-bg;
-  font-family: 'Titillium Web', sans-serif;
-}
-
-a {
-  text-decoration:none;
-  color:$main;
-  transition:.5s ease;
-  &:hover {
-    color:$main-dark;
-  }
-}
-
-.form {
-  background:rgba($form-bg,.9);
-  padding: 40px;
-  max-width:600px;
-  margin:40px auto;
-  border-radius:$br;
-  box-shadow:0 4px 10px 4px rgba($form-bg,.3);
-}
-
-.tab-group {
-  list-style:none;
+  margin:0;
   padding:0;
-  margin:0 0 40px 0;
-  &:after {
-    content: "";
-    display: table;
-    clear: both;
-  }
-  li a {
-    display:block;
-    text-decoration:none;
-    padding:15px;
-    background:rgba($gray-light,.25);
-    color:$gray-light;
-    font-size:20px;
-    float:left;
-    width:50%;
-    text-align:center;
-    cursor:pointer;
-    transition:.5s ease;
-    &:hover {
-      background:$main-dark;
-      color:$white;
-    }
-  }
-  .active a {
-    background:$main;
-    color:$white;
-  }
+  font-family: sans-serif;
+  background: linear-gradient(#141e30, #243b55);
 }
 
-.tab-content > div:last-child {
-  display:none;
+.login-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 400px;
+  padding: 40px;
+  transform: translate(-50%, -50%);
+  background: rgba(0,0,0,.5);
+  box-sizing: border-box;
+  box-shadow: 0 15px 25px rgba(0,0,0,.6);
+  border-radius: 10px;
 }
 
-
-h1 {
-  text-align:center;
-  color:$white;
-  font-weight:$thin;
-  margin:0 0 40px;
+.login-box h2 {
+  margin: 0 0 30px;
+  padding: 0;
+  color: #fff;
+  text-align: center;
 }
 
-label {
-  position:absolute;
-  transform:translateY(6px);
-  left:13px;
-  color:rgba($white,.5);
-  transition:all 0.25s ease;
-  -webkit-backface-visibility: hidden;
+.login-box .user-box {
+  position: relative;
+}
+
+.login-box .user-box input {
+  width: 100%;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #fff;
+  margin-bottom: 30px;
+  border: none;
+  border-bottom: 1px solid #fff;
+  outline: none;
+  background: transparent;
+}
+.login-box .user-box label {
+  position: absolute;
+  top:0;
+  left: 0;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #fff;
   pointer-events: none;
-  font-size:22px;
-  .req {
-  	margin:2px;
-  	color:$main;
+  transition: .5s;
+}
+
+.login-box .user-box input:focus ~ label,
+.login-box .user-box input:valid ~ label {
+  top: -20px;
+  left: 0;
+  color: #03e9f4;
+  font-size: 12px;
+}
+
+.login-box form a {
+  position: relative;
+  display: inline-block;
+  padding: 10px 20px;
+  color: #03e9f4;
+  font-size: 16px;
+  text-decoration: none;
+  text-transform: uppercase;
+  overflow: hidden;
+  transition: .5s;
+  margin-top: 40px;
+  letter-spacing: 4px
+}
+
+.login-box a:hover {
+  background: #03e9f4;
+  color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 5px #03e9f4,
+              0 0 25px #03e9f4,
+              0 0 50px #03e9f4,
+              0 0 100px #03e9f4;
+}
+
+.login-box a span {
+  position: absolute;
+  display: block;
+}
+
+.login-box a span:nth-child(1) {
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #03e9f4);
+  animation: btn-anim1 1s linear infinite;
+}
+
+@keyframes btn-anim1 {
+  0% {
+    left: -100%;
+  }
+  50%,100% {
+    left: 100%;
   }
 }
 
-label.active {
-  transform:translateY(50px);
-  left:2px;
-  font-size:14px;
-  .req {
-    opacity:0;
+.login-box a span:nth-child(2) {
+  top: -100%;
+  right: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(180deg, transparent, #03e9f4);
+  animation: btn-anim2 1s linear infinite;
+  animation-delay: .25s
+}
+
+@keyframes btn-anim2 {
+  0% {
+    top: -100%;
+  }
+  50%,100% {
+    top: 100%;
   }
 }
 
-label.highlight {
-	color:$white;
+.login-box a span:nth-child(3) {
+  bottom: 0;
+  right: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(270deg, transparent, #03e9f4);
+  animation: btn-anim3 1s linear infinite;
+  animation-delay: .5s
 }
 
-input, textarea {
-  font-size:22px;
-  display:block;
-  width:100%;
-  height:100%;
-  padding:5px 10px;
-  background:none;
-  background-image:none;
-  border:1px solid $gray-light;
-  color:$white;
-  border-radius:0;
-  transition:border-color .25s ease, box-shadow .25s ease;
-  &:focus {
-		outline:0;
-		border-color:$main;
+@keyframes btn-anim3 {
+  0% {
+    right: -100%;
+  }
+  50%,100% {
+    right: 100%;
   }
 }
 
-textarea {
-  border:2px solid $gray-light;
-  resize: vertical;
+.login-box a span:nth-child(4) {
+  bottom: -100%;
+  left: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(360deg, transparent, #03e9f4);
+  animation: btn-anim4 1s linear infinite;
+  animation-delay: .75s
 }
 
-.field-wrap {
-  position:relative;
-  margin-bottom:40px;
-}
-
-.top-row {
-  &:after {
-    content: "";
-    display: table;
-    clear: both;
+@keyframes btn-anim4 {
+  0% {
+    bottom: -100%;
   }
-
-  > div {
-    float:left;
-    width:48%;
-    margin-right:4%;
-    &:last-child { 
-      margin:0;
-    }
+  50%,100% {
+    bottom: 100%;
   }
-}
-
-.button {
-  border:0;
-  outline:none;
-  border-radius:0;
-  padding:15px 0;
-  font-size:2rem;
-  font-weight:$bold;
-  text-transform:uppercase;
-  letter-spacing:.1em;
-  background:$main;
-  color:$white;
-  transition:all.5s ease;
-  -webkit-appearance: none;
-  &:hover, &:focus {
-    background:$main-dark;
-  }
-}
-
-.button-block {
-  display:block;
-  width:100%;
-}
-
-.forgot {
-  margin-top:-20px;
-  text-align:right;
 }
